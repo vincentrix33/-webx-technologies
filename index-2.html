@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebX Technologies - Custom Software Development Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a1d35 0%, #0f1729 100%);
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Subtle Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(100, 150, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(100, 150, 255, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: -2;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(100, 150, 255, 0.15);
+            border-radius: 50%;
+            animation: float 15s infinite;
+            box-shadow: 0 0 15px rgba(100, 150, 255, 0.2);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-50px) translateX(50px); }
+            50% { transform: translateY(-100px) translateX(-50px); }
+            75% { transform: translateY(-50px) translateX(50px); }
+        }
+
+        /* Header/Navigation */
+        header {
+            background: rgba(15, 20, 40, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(100, 150, 255, 0.2);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #6496ff;
+            font-family: 'Segoe UI', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #9f7aea;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #e0e7ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            background: rgba(100, 150, 255, 0.15);
+            color: #6496ff;
+        }
+
+        /* Professional Container */
+        .glass-container {
+            background: rgba(20, 25, 45, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(100, 150, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            padding: 3rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            position: relative;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #6496ff 0%, #9f7aea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #b8c5ff;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+            color: #c7d2fe;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #6496ff 0%, #5478e0 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(100, 150, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #5478e0 0%, #4360c9 100%);
+            box-shadow: 0 6px 30px rgba(100, 150, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #e0e7ff;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #6496ff, #9f7aea);
+            border-radius: 2px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: rgba(25, 30, 50, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(100, 150, 255, 0.2);
+            transition: all 0.3s;
+            color: #fff;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(100, 150, 255, 0.4);
+            box-shadow: 0 12px 30px rgba(100, 150, 255, 0.15);
+            background: rgba(30, 35, 55, 0.8);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #b8c5ff;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #c7d2fe;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .tech-badge {
+            background: rgba(100, 150, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            color: #b8c5ff;
+            font-weight: 500;
+            border: 1px solid rgba(100, 150, 255, 0.25);
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .tech-badge:hover {
+            background: rgba(100, 150, 255, 0.2);
+            border-color: rgba(100, 150, 255, 0.4);
+            color: #e0e7ff;
+            transform: translateY(-2px);
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .portfolio-item {
+            background: rgba(25, 30, 50, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(100, 150, 255, 0.2);
+            color: #fff;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(100, 150, 255, 0.4);
+            box-shadow: 0 12px 30px rgba(100, 150, 255, 0.15);
+            background: rgba(30, 35, 55, 0.8);
+        }
+
+        .portfolio-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #b8c5ff;
+            font-weight: 600;
+        }
+
+        .portfolio-item p {
+            color: #c7d2fe;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: rgba(100, 150, 255, 0.15);
+            padding: 0.4rem 0.9rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(100, 150, 255, 0.3);
+            color: #b8c5ff;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            background: rgba(25, 30, 50, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(100, 150, 255, 0.2);
+            text-align: center;
+            color: #fff;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            border-color: rgba(100, 150, 255, 0.4);
+            box-shadow: 0 12px 30px rgba(100, 150, 255, 0.15);
+            background: rgba(30, 35, 55, 0.8);
+        }
+
+        .team-member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6496ff 0%, #9f7aea 100%);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: white;
+            border: 3px solid rgba(100, 150, 255, 0.3);
+        }
+
+        .team-member h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #b8c5ff;
+            font-weight: 600;
+        }
+
+        .team-member .role {
+            color: #9f7aea;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .team-member p {
+            color: #c7d2fe;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #b8c5ff;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(100, 150, 255, 0.25);
+            border-radius: 8px;
+            background: rgba(25, 30, 50, 0.5);
+            backdrop-filter: blur(10px);
+            color: #e0e7ff;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #6496ff;
+            background: rgba(25, 30, 50, 0.7);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(184, 197, 255, 0.4);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: #fff;
+            padding: 1.5rem;
+            border: 1px solid rgba(100, 150, 255, 0.2);
+            background: rgba(25, 30, 50, 0.5);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .stat-item:hover {
+            border-color: rgba(100, 150, 255, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6496ff 0%, #9f7aea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            color: #b8c5ff;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 20, 40, 0.95);
+            backdrop-filter: blur(10px);
+            color: #b8c5ff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(100, 150, 255, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            color: #c7d2fe;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: #6496ff;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #9f7aea;
+            transform: scale(1.2);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .glass-container {
+                padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header/Navigation -->
+    <header>
+        <nav>
+            <div class="logo">Web<span>X</span></div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="fade-in">
+            <h1>WebX Technologies</h1>
+            <p class="tagline">Transforming Ideas Into Digital Reality</p>
+            <p>We are a cutting-edge software development company specializing in custom web applications, mobile solutions, and enterprise software. Our team of expert developers brings your vision to life with innovative technology and exceptional craftsmanship.</p>
+            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Start Your Project</button>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <div class="glass-container">
+        <div class="stats fade-in">
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Projects Delivered</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Team Members</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">8+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="glass-container fade-in">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Custom Web Development</h3>
+                    <p>Full-stack web applications built with modern frameworks and technologies. From concept to deployment, we create scalable, responsive, and secure web solutions tailored to your business needs.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Mobile App Development</h3>
+                    <p>Native and cross-platform mobile applications for iOS and Android. We deliver seamless user experiences with cutting-edge mobile technology and intuitive design.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>AI Integration</h3>
+                    <p>Leverage artificial intelligence to automate processes, enhance decision-making, and create intelligent applications. We integrate AI/ML capabilities into your existing systems.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Cloud Solutions</h3>
+                    <p>Cloud infrastructure setup, migration, and optimization. We help you leverage AWS, Azure, and Google Cloud for scalable and reliable applications.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>UI/UX Design</h3>
+                    <p>Beautiful, intuitive interfaces that users love. Our design team creates engaging experiences that combine aesthetics with functionality.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>API Development</h3>
+                    <p>RESTful and GraphQL APIs that power your applications. We build robust, well-documented APIs with security and performance in mind.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <div class="glass-container fade-in">
+        <h2 class="section-title">Our Tech Stack</h2>
+        
+        <div style="margin-bottom: 2rem;">
+            <h3 style="color: #9f7aea; text-align: center; margin-bottom: 1.5rem; font-weight: 600; font-size: 1.2rem;">Frontend Development</h3>
+            <div class="tech-stack">
+                <div class="tech-badge">React</div>
+                <div class="tech-badge">Next.js</div>
+                <div class="tech-badge">Vue.js</div>
+                <div class="tech-badge">Angular</div>
+                <div class="tech-badge">Svelte</div>
+                <div class="tech-badge">TypeScript</div>
+                <div class="tech-badge">JavaScript</div>
+                <div class="tech-badge">HTML5</div>
+                <div class="tech-badge">CSS3</div>
+                <div class="tech-badge">Tailwind CSS</div>
+                <div class="tech-badge">Material-UI</div>
+                <div class="tech-badge">Bootstrap</div>
+                <div class="tech-badge">Redux</div>
+                <div class="tech-badge">Zustand</div>
+                <div class="tech-badge">WebSocket</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+            <h3 style="color: #9f7aea; text-align: center; margin-bottom: 1.5rem; font-weight: 600; font-size: 1.2rem;">Backend Development</h3>
+            <div class="tech-stack">
+                <div class="tech-badge">Node.js</div>
+                <div class="tech-badge">Express</div>
+                <div class="tech-badge">NestJS</div>
+                <div class="tech-badge">Python</div>
+                <div class="tech-badge">Django</div>
+                <div class="tech-badge">FastAPI</div>
+                <div class="tech-badge">Flask</div>
+                <div class="tech-badge">Java</div>
+                <div class="tech-badge">Spring Boot</div>
+                <div class="tech-badge">PHP</div>
+                <div class="tech-badge">Laravel</div>
+                <div class="tech-badge">Ruby on Rails</div>
+                <div class="tech-badge">Go</div>
+                <div class="tech-badge">Rust</div>
+                <div class="tech-badge">.NET</div>
+                <div class="tech-badge">C#</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+            <h3 style="color: #ff00ff; text-align: center; margin-bottom: 1.5rem; font-weight: 600; font-size: 1.2rem;">Mobile Development</h3>
+            <div class="tech-stack">
+                <div class="tech-badge">React Native</div>
+                <div class="tech-badge">Flutter</div>
+                <div class="tech-badge">Swift</div>
+                <div class="tech-badge">SwiftUI</div>
+                <div class="tech-badge">Kotlin</div>
+                <div class="tech-badge">Java Android</div>
+                <div class="tech-badge">Ionic</div>
+                <div class="tech-badge">Xamarin</div>
+                <div class="tech-badge">Cordova</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+            <h3 style="color: #ff00ff; text-align: center; margin-bottom: 1.5rem; font-weight: 600; font-size: 1.2rem;">Databases</h3>
+            <div class="tech-stack">
+                <div class="tech-badge">MongoDB</div>
+                <div class="tech-badge">PostgreSQL</div>
+                <div class="tech-badge">MySQL</div>
+                <div class="tech-badge">SQL Server</div>
+                <div class="tech-badge">Oracle</div>
+                <div class="tech-badge">Redis</div>
+                <div class="tech-badge">Cassandra</div>
+                <div class="tech-badge">DynamoDB</div>
+                <div class="tech-badge">Firebase</div>
+                <div class="tech-badge">Supabase</div>
+                <div class="tech-badge">Elasticsearch</div>
+                <div class="tech-badge">Neo4j</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+            <h3 style="color: #ff00ff; text-align: center; margin-bottom: 1.5rem; font-weight: 600; font-size: 1.2rem;">Cloud & DevOps</h3>
+            <div class="tech-stack">
+                <div class="tech-badge">AWS</div>
+                <div class="tech-badge">Azure</div>
+                <div class="tech-badge">Google Cloud</div>
+                <div class="tech-badge">Docker</div>
+                <div class="tech-badge">Kubernetes</div>
+                <div class="tech-badge">Jenkins</div>
+                <div class="tech-badge">GitHub Actions</div>
+                <div class="tech-badge">GitLab CI/CD</div>
+                <div class="tech-badge">Terraform</div>
+                <div class="tech-badge">Ansible</div>
+                <div class="tech-badge">Nginx</div>
+                <div class="tech-badge">Apache</div>
+                <div class="tech-badge">CircleCI</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+            <h3 style="color: #ff00ff; text-align: center; margin-bottom: 1.5rem; font-weight: 600; font-size: 1.2rem;">AI & Machine Learning</h3>
+            <div class="tech-stack">
+                <div class="tech-badge">TensorFlow</div>
+                <div class="tech-badge">PyTorch</div>
+                <div class="tech-badge">OpenAI</div>
+                <div class="tech-badge">Anthropic Claude</div>
+                <div class="tech-badge">Hugging Face</div>
+                <div class="tech-badge">LangChain</div>
+                <div class="tech-badge">Scikit-learn</div>
+                <div class="tech-badge">Keras</div>
+                <div class="tech-badge">YOLO</div>
+                <div class="tech-badge">OpenCV</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+            <h3 style="color: #ff00ff; text-align: center; margin-bottom: 1.5rem; font-weight: 600; font-size: 1.2rem;">API & Integration</h3>
+            <div class="tech-stack">
+                <div class="tech-badge">REST API</div>
+                <div class="tech-badge">GraphQL</div>
+                <div class="tech-badge">gRPC</div>
+                <div class="tech-badge">WebSockets</div>
+                <div class="tech-badge">Stripe</div>
+                <div class="tech-badge">PayPal</div>
+                <div class="tech-badge">Twilio</div>
+                <div class="tech-badge">SendGrid</div>
+                <div class="tech-badge">OAuth</div>
+                <div class="tech-badge">JWT</div>
+                <div class="tech-badge">Postman</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+            <h3 style="color: #ff00ff; text-align: center; margin-bottom: 1.5rem; font-weight: 600; font-size: 1.2rem;">Blockchain & Web3</h3>
+            <div class="tech-stack">
+                <div class="tech-badge">Ethereum</div>
+                <div class="tech-badge">Solidity</div>
+                <div class="tech-badge">Web3.js</div>
+                <div class="tech-badge">Smart Contracts</div>
+                <div class="tech-badge">Hardhat</div>
+                <div class="tech-badge">Truffle</div>
+                <div class="tech-badge">IPFS</div>
+                <div class="tech-badge">Polygon</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+            <h3 style="color: #ff00ff; text-align: center; margin-bottom: 1.5rem; font-weight: 600; font-size: 1.2rem;">Testing & Quality</h3>
+            <div class="tech-stack">
+                <div class="tech-badge">Jest</div>
+                <div class="tech-badge">Mocha</div>
+                <div class="tech-badge">Cypress</div>
+                <div class="tech-badge">Selenium</div>
+                <div class="tech-badge">Playwright</div>
+                <div class="tech-badge">JUnit</div>
+                <div class="tech-badge">PyTest</div>
+                <div class="tech-badge">Postman</div>
+                <div class="tech-badge">SonarQube</div>
+            </div>
+        </div>
+
+        <div>
+            <h3 style="color: #ff00ff; text-align: center; margin-bottom: 1.5rem; font-weight: 600; font-size: 1.2rem;">Tools & Platforms</h3>
+            <div class="tech-stack">
+                <div class="tech-badge">Git</div>
+                <div class="tech-badge">GitHub</div>
+                <div class="tech-badge">GitLab</div>
+                <div class="tech-badge">Jira</div>
+                <div class="tech-badge">Slack</div>
+                <div class="tech-badge">VS Code</div>
+                <div class="tech-badge">Figma</div>
+                <div class="tech-badge">Adobe XD</div>
+                <div class="tech-badge">Vercel</div>
+                <div class="tech-badge">Netlify</div>
+                <div class="tech-badge">Railway</div>
+                <div class="tech-badge">Heroku</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="glass-container fade-in">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <h3>E-Commerce Platform</h3>
+                    <p>A comprehensive multi-vendor marketplace with real-time inventory management, secure payment processing, and advanced analytics dashboard.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Stripe</span>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Healthcare Management System</h3>
+                    <p>HIPAA-compliant patient management platform with telemedicine capabilities, appointment scheduling, and electronic health records.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">Next.js</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">AWS</span>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <h3>AI-Powered CRM</h3>
+                    <p>Intelligent customer relationship management system with predictive analytics, automated workflows, and natural language processing.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">React</span>
+                        <span class="tag">OpenAI</span>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Real Estate Portal</h3>
+                    <p>Property listing platform with virtual tours, mortgage calculators, and AI-powered property matching for buyers and sellers.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">Firebase</span>
+                        <span class="tag">Google Maps API</span>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Financial Trading Platform</h3>
+                    <p>High-frequency trading platform with real-time market data, advanced charting, and automated trading algorithms.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">WebSocket</span>
+                        <span class="tag">Redis</span>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Learning Management System</h3>
+                    <p>Comprehensive educational platform with video streaming, interactive quizzes, progress tracking, and certification management.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Express</span>
+                        <span class="tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team">
+        <div class="glass-container fade-in">
+            <h2 class="section-title">Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-member-avatar">SM</div>
+                    <h3>Sarah Mitchell</h3>
+                    <p class="role">CEO & Co-Founder</p>
+                    <p>Visionary leader with 15+ years in tech industry, specializing in digital transformation and business strategy.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-avatar">JC</div>
+                    <h3>James Chen</h3>
+                    <p class="role">CTO & Co-Founder</p>
+                    <p>Full-stack architect with expertise in scalable systems, cloud infrastructure, and emerging technologies.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-avatar">EP</div>
+                    <h3>Emily Parker</h3>
+                    <p class="role">Lead UI/UX Designer</p>
+                    <p>Award-winning designer creating beautiful, user-centered experiences that drive engagement and conversion.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-avatar">MR</div>
+                    <h3>Marcus Rodriguez</h3>
+                    <p class="role">Senior Developer</p>
+                    <p>Full-stack specialist with deep expertise in React, Node.js, and database optimization for high-traffic applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="glass-container fade-in">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-form">
+                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact">
+                    <!-- Honeypot field for spam protection -->
+                    <p style="display: none;">
+                        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                    </p>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+            <div style="text-align: center; color: #c7d2fe; margin-top: 3rem;">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;">📧 contact@webxtechnologies.com</p>
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;">📞 +1 (555) 123-4567</p>
+                <p style="font-size: 1.2rem;">📍 123 Tech Avenue, Silicon Valley, CA 94025</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" title="LinkedIn">💼</a>
+                <a href="#" title="GitHub">⚙️</a>
+                <a href="#" title="Twitter">🐦</a>
+                <a href="#" title="Facebook">📘</a>
+            </div>
+            <p>&copy; 2024 WebX Technologies. All rights reserved.</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">Transforming Ideas Into Digital Reality</p>
+        </div>
+    </footer>
+
+    <script>
+        // Generate animated particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 40;
+            const colors = ['rgba(100, 150, 255, 0.15)', 'rgba(159, 122, 234, 0.12)', 'rgba(120, 140, 200, 0.1)'];
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 100 + 50;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.background = color;
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                particle.style.animationDuration = `${Math.random() * 10 + 20}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Scroll animations
+        function handleScrollAnimations() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeElements.forEach(el => observer.observe(el));
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#home') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize
+        window.addEventListener('load', () => {
+            createParticles();
+            handleScrollAnimations();
+        });
+    </script>
+</body>
+</html>
